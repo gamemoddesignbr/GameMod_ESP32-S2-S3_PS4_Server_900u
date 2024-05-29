@@ -1,7 +1,7 @@
 
 
 # GameMod_ESP32-S2-S3_PS4_Server_900u
-Modded PS4 900FW Auto Host For ESP32-S2/S3 Boards Based on Stooged's ["ESP32 Server 9.00u"](https://github.com/stooged/ESP32-Server-900u) and MUXI's ["MUXI900u"](https://psxtools.de/forum/index.php?thread/89778-ps4-exploit-muxi900u-mit-usb-emulation-f%C3%BCr-esp32-s2-s3/).<br>
+Modded PS4 900FW Auto Host For ESP32-S2/S3 Boards Based on Stooged's ["ESP32 Server 9.00u"](https://github.com/stooged/ESP32-Server-900u) and MUXI's ["MUXI900u"](https://psxtools.de/forum/index.php?thread/89778-ps4-exploit-muxi900u-mit-usb-emulation-f%C3%BCr-esp32-s2-s3/).<br><br>
 This is a project designed for the [ESP32-S2](https://www.espressif.com/en/products/socs/esp32-s2), *[ESP32-S3](https://www.espressif.com/en/products/socs/esp32-s3) and [ESP32](https://www.espressif.com/en/products/socs/esp32) boards to provide a WiFi HTTP server, DNS server and *<b>USB storage emulation</b>.
 It was designed for the [PS4 9.00 OOB Exploit](https://github.com/ChendoChap/pOOBs4) and combined with [PsFree](https://wololo.net/2023/12/04/psfree-webkit-exploit-for-ps4-6-00-to-9-60-and-ps5-1-00-to-5-50-quickhen-toolkit-announced).<br>
 The only files required on the storage of the ESP32 are the .bin payloads, everything else is handled internally including generating a list of payloads.<br>
@@ -39,6 +39,7 @@ These <a href=https://www.espressif.com/en/products/socs/esp32-s2>ESP32-S2</a> b
 :ok: <a href=https://docs.ai-thinker.com/en/12k_development_board_esp32-s2>Ai-thinker ESP 12K</a> Wiring <a href=https://github.com/stooged/ESP32-Server-900u/blob/main/Images/ai-thinker-esp12k.jpg>Diagram</a><br><br>
 <hr>These <a href=https://www.espressif.com/en/products/socs/esp32-s3>ESP32-S3</a> boards can be used for a plug and play setup (no wiring)<br><br>
 :ok: <a href=https://docs.espressif.com/projects/esp-idf/en/latest/esp32s3/hw-reference/esp32s3/user-guide-devkitc-1.html>ESP32-S3-DevKitC-1</a>.<br><br>
+
 ## Uploading to board
 
 The installation is simple! You just use the Arduino IDE to flash the sketch/firmware to the ESP32 board.<br>
