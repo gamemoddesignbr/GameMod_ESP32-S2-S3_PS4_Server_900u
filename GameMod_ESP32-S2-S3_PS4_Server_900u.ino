@@ -1,6 +1,6 @@
 #include <FS.h>
 #include "WiFi.h"
-#include "ESPAsyncWebServer.h"
+#include "ESPAsyncWebSrv.h"
 #include "esp_task_wdt.h"
 #include <DNSServer.h>
 #include <ESPmDNS.h>
@@ -817,7 +817,7 @@ void setup() {
          if (connectWifi && WIFI_SSID.length() > 0 && WIFI_PASS.length() > 0) {
             //    USBSerial.println("WIFI MODE!");
 
-            WiFi.setAutoConnect(true);
+//            WiFi.setAutoConnect(true);
             WiFi.setAutoReconnect(true);
 
             if (useWF) {

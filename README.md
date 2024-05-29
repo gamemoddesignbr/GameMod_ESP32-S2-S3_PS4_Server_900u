@@ -15,10 +15,18 @@ If you're using a <b>ESP32-S2</b> you'd not need a USB drive with this project a
 ## ESP32-S3 Boards
 If you're using a <b>ESP32-S2</b> you'd not need a USB drive with this project as it emulates an USB mass storage device to the console and triggers the filesystem bug to leverage the exfathax exploit.<br><br>
 ## Libraries needed to compile this project
-This project is built using <b><a href=https://github.com/me-no-dev/ESPAsyncWebServer>ESPAsyncWebServer</a></b> and <b><a href=https://github.com/me-no-dev/AsyncTCP>AsyncTCP</a></b> so you need to add these libraries to your Arduino IDE.<br>
+This project is built using <b><a href=https://github.com/me-no-dev/ESPAsyncWebServer>ESPAsyncWebSrv</a></b> and <b><a href=https://github.com/me-no-dev/AsyncTCP>AsyncTCP</a></b> so you need to add these libraries to your Arduino IDE.<br>
 Install or update the ESP32 core by adding this URL to the <a href=https://docs.arduino.cc/learn/starting-guide/cores>Additional Boards Manager URLs</a> section in the Arduino IDE "<b>Preferences</b>".
 Then go to the "<b>Boards Manager</b> and install or update the "<b>ESP32</b>" core.<br>
 If you have problems with the board being identified/found in windows then you might need to install the <a href=https://www.silabs.com/developers/usb-to-uart-bridge-vcp-drivers>USB to UART Bridge</a> drivers.<br><br>
+PS: As of today (May, 29th 2024, changes in the `mbedtls` lybrary caused this project to not compile correctly and some changes in the <b>ESPAsyncWebSrv</b> need to be made:<br>
+-Inside <b>WebAuthentication.cpp</b> change the `mbedtls_md5_starts_ret` call to `mbedtls_md5_starts`.<br>
+-Inside <b>WebAuthentication.cpp</b> change the `mbedtls_md5_update_ret` call to `mbedtls_md5_update`.<br>
+-Inside <b>WebAuthentication.cpp</b> change the `mbedtls_md5_finish_ret` call to `mbedtls_md5_finish`.<br>
+-Inside <b>AsyncWebSocket.cpp</b> change the `mbedtls_sha1_starts_ret` call to `mbedtls_sha1_starts`.<br>
+-Inside <b>AsyncWebSocket.cpp</b> change the `mbedtls_sha1_update_ret` call to `mbedtls_sha1_update`.<br>
+-Inside <b>AsyncWebSocket.cpp</b> change the `mbedtls_sha1_finish_ret` call to `mbedtls_sha1_finish`.<br>
+-Inside <b>AsyncEventSource.cpp</b> comment out the line `ets_printf("ERROR: Too many messages queued\n");`.<br><br>
 ## Using this project in your ESP32 board
 <b>Programming de ESP32 board:</b><br>
 -Go to the [latest release](https://github.com/gamemoddesignbr/GameMod_ESP32-S2-S3_PS4_Server_900u/releases/latest) page, download the most recent <b>GameMod_ESP32S2-S3_PS4Server900u_DDMMYYYY.zip</b>, extract it to your computer.<br>
