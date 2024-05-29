@@ -1,5 +1,3 @@
-
-
 # GameMod_ESP32-S2-S3_PS4_Server_900u
 Modded PS4 900FW Auto Host For ESP32-S2/S3 Boards Based on Stooged's ["ESP32 Server 9.00u"](https://github.com/stooged/ESP32-Server-900u) and MUXI's ["MUXI900u"](https://psxtools.de/forum/index.php?thread/89778-ps4-exploit-muxi900u-mit-usb-emulation-f%C3%BCr-esp32-s2-s3/).<br><br>
 This is a project designed for the [ESP32-S2](https://www.espressif.com/en/products/socs/esp32-s2), *[ESP32-S3](https://www.espressif.com/en/products/socs/esp32-s3) and [ESP32](https://www.espressif.com/en/products/socs/esp32) boards to provide a WiFi HTTP server, DNS server and *<b>USB storage emulation</b>.
@@ -16,11 +14,22 @@ If you're using a <b>ESP32</b> board `the usb emulation will not be available` s
 If you're using a <b>ESP32-S2</b> you'd not need a USB drive with this project as it emulates an USB mass storage device to the console and triggers the filesystem bug to leverage the exfathax exploit.<br><br>
 ## ESP32-S3 Boards
 If you're using a <b>ESP32-S2</b> you'd not need a USB drive with this project as it emulates an USB mass storage device to the console and triggers the filesystem bug to leverage the exfathax exploit.<br><br>
-## Libraries
+## Libraries needed to compile this project
 This project is built using <b><a href=https://github.com/me-no-dev/ESPAsyncWebServer>ESPAsyncWebServer</a></b> and <b><a href=https://github.com/me-no-dev/AsyncTCP>AsyncTCP</a></b> so you need to add these libraries to your Arduino IDE.<br>
 Install or update the ESP32 core by adding this URL to the <a href=https://docs.arduino.cc/learn/starting-guide/cores>Additional Boards Manager URLs</a> section in the Arduino IDE "<b>Preferences</b>".
 Then go to the "<b>Boards Manager</b> and install or update the "<b>ESP32</b>" core.<br>
 If you have problems with the board being identified/found in windows then you might need to install the <a href=https://www.silabs.com/developers/usb-to-uart-bridge-vcp-drivers>USB to UART Bridge</a> drivers.<br><br>
+## Using this project in your ESP32 board
+<b>Programming de ESP32 board:</b>
+-Go to the [latest release](https://github.com/gamemoddesignbr/GameMod_ESP32-S2-S3_PS4_Server_900u/releases/latest) page, download the most recent <b>GameMod_ESP32S2-S3_PS4Server900u_DDMMYYYY.zip</b>, extract it to your computer.
+-Download the [latest NodeMCU-PyFlasher](https://github.com/marcelstoer/nodemcu-pyflasher/releases/latest) and flash the <b>GameMod_ESP32-S2-S3_PS4_Server_900u.bin</b><br>
+<b>Uploading the necessary files:</b>
+-Connect to the WiFi access point with a PC/laptop (<b>GameMod_PS4_WiFi</b> is the default SSID and <b>123456789</b> is the default password).<br>
+-Use a web browser and go to http://10.1.1.1/admin.html (http://ps4.local).<br>
+-On the side menu of the admin page select <b>File Uploader</b>, then click <b>Select Files</b> and locate the <b>data</b> folder inside the <b>GameMod_ESP32-S2-S3_PS4_Server_900u</b> folder.
+-Select all files and click <b>Upload Files</b>.<br><br>
+## Configuring the project in your ESP32 board
+You can access the admin page and your ESP32 to be used as a Access Point (AP) and have your PS4 completely offline, or configure the ESP32 to connect to your WiFi (specifiying a static IP) so your PS4 could be connected to the same WiFi and still use the ESP32 for exploit and keep access to the internet.<br><br>
 ## Tested Boards
 These <a href=https://www.espressif.com/en/products/socs/esp32-s2>ESP32-S2</a> boards can be used for a plug and play setup (no wiring)<br><br>
 4MB boards<br>
@@ -39,17 +48,6 @@ These <a href=https://www.espressif.com/en/products/socs/esp32-s2>ESP32-S2</a> b
 :ok: <a href=https://docs.ai-thinker.com/en/12k_development_board_esp32-s2>Ai-thinker ESP 12K</a> Wiring <a href=https://github.com/stooged/ESP32-Server-900u/blob/main/Images/ai-thinker-esp12k.jpg>Diagram</a><br><br>
 <hr>These <a href=https://www.espressif.com/en/products/socs/esp32-s3>ESP32-S3</a> boards can be used for a plug and play setup (no wiring)<br><br>
 :ok: <a href=https://docs.espressif.com/projects/esp-idf/en/latest/esp32s3/hw-reference/esp32s3/user-guide-devkitc-1.html>ESP32-S3-DevKitC-1</a>.<br><br>
-
-## Uploading to board
-
-The installation is simple! You just use the Arduino IDE to flash the sketch/firmware to the ESP32 board.<br>
-Next you connect to the WiFi access point with a pc/laptop, <b>GameMod_PS4_WiFi</b> is the default SSID and <b>123456789</b> is the default password.<br>
-Then use a web browser and go to http://10.1.1.1/admin.html <b>10.1.1.1</b> is the default webserver IP or http://ps4.local<br>
-On the side menu of the admin page select <b>File Uploader</b>, then click <b>Select Files</b> and locate the <b>data</b> folder inside the <b>GameMod_ESP32-S2-S3_PS4_Server_900u</b> folder. Next select all files and click <b>Upload Files</b>.
-The you can go to <b>Config Editor</b> and change the password for the WiFi AP.
-Alternatively, if you install this <a href=https://github.com/stooged/arduino-esp32fs-plugin>plugin</a> to your Arduino IDE you can upload the files to the board storage with it by selecting <b>Tools > ESP32 Sketch Data Upload</b>.
-<img src=https://github.com/stooged/ESP32-Server-900u/blob/main/Images/dataup.jpg><br><br>
-The files uploaded using this method are found in the <b>data</b> folder inside the <b>GameMod_ESP32-S2-S3_PS4_Server_900u</b> folder.<br><br>
 ## Internal pages
 
 * <b>admin.html</b> - the main landing page for administration.
