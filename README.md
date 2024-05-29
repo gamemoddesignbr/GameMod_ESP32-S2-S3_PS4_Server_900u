@@ -21,7 +21,7 @@ Then go to the "<b>Boards Manager</b> and install or update the "<b>ESP32</b>" c
 If you have problems with the board being identified/found in windows then you might need to install the <a href=https://www.silabs.com/developers/usb-to-uart-bridge-vcp-drivers>USB to UART Bridge</a> drivers.<br><br>
 ## Using this project in your ESP32 board
 <b>Programming de ESP32 board:</b><br>
--Go to the [latest release](https://github.com/gamemoddesignbr/GameMod_ESP32-S2-S3_PS4_Server_900u/releases/latest) page, download the most recent <b>GameMod_ESP32S2-S3_PS4Server900u_DDMMYYYY.zip</b>, extract it to your computer.
+-Go to the [latest release](https://github.com/gamemoddesignbr/GameMod_ESP32-S2-S3_PS4_Server_900u/releases/latest) page, download the most recent <b>GameMod_ESP32S2-S3_PS4Server900u_DDMMYYYY.zip</b>, extract it to your computer.<br>
 -Download the [latest NodeMCU-PyFlasher](https://github.com/marcelstoer/nodemcu-pyflasher/releases/latest) and flash the <b>GameMod_ESP32-S2-S3_PS4_Server_900u.bin</b><br><br>
 <b>Uploading the necessary files:</b><br>
 -Connect to the WiFi access point with a PC/laptop (<b>GameMod_PS4_WiFi</b> is the default SSID and <b>123456789</b> is the default password).<br>
