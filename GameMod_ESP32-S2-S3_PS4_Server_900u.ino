@@ -5,7 +5,6 @@
 #include <DNSServer.h>
 #include <ESPmDNS.h>
 #include <Update.h>
-
 #if defined(CONFIG_IDF_TARGET_ESP32S2) | defined(CONFIG_IDF_TARGET_ESP32S3) // ESP32-S2/S3 BOARDS(usb emulation)
 #include "USB.h"
 #include "USBMSC.h"
@@ -86,7 +85,9 @@ int TIME2SLEEP = 30; // minutes
 //-----------------------------------------------------//
 
 #include "Loader.h"
+
 #include "Pages.h"
+
 #include "jzip.h"
 
 #if USESD
@@ -108,6 +109,7 @@ int TIME2SLEEP = 30; // minutes
 #define FILESYS LittleFS
 #else
 #include "SPIFFS.h"
+
 #define FILESYS SPIFFS
 #endif
 #endif
