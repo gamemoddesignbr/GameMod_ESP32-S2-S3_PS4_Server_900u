@@ -30,7 +30,8 @@ PS: As of today (May, 29th 2024, changes in the `mbedtls` lybrary caused this pr
 ## Using this project in your ESP32 board
 <b>Programming de ESP32 board:</b><br>
 -Go to the [latest release](https://github.com/gamemoddesignbr/GameMod_ESP32-S2-S3_PS4_Server_900u/releases/latest) page, download the most recent <b>GameMod_ESP32S2-S3_PS4Server900u_DDMMYYYY.zip</b>, extract it to your computer.<br>
--Download the [latest NodeMCU-PyFlasher](https://github.com/marcelstoer/nodemcu-pyflasher/releases/latest) and flash the <b>GameMod_ESP32-S2-S3_PS4_Server_900u.bin</b><br><br>
+-Download the [latest NodeMCU-PyFlasher](https://github.com/marcelstoer/nodemcu-pyflasher/releases/latest) and flash the <b>GameMod_ESP32-S2-S3_PS4_Server_900u.bin</b>
+<img src=https://github.com/gamemoddesignbr/GameMod_ESP32-S2-S3_PS4_Server_900u/blob/main/images/nodemcu_pyflasher.png><br><br>
 <b>Uploading the necessary files:</b><br>
 -Connect to the WiFi access point with a PC/laptop (<b>GameMod_PS4_WiFi</b> is the default SSID and <b>123456789</b> is the default password).<br>
 -Use a web browser and go to http://10.1.1.1/admin.html (http://ps4.local).<br>
