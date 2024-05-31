@@ -62,16 +62,16 @@ PS: As of today (May, 29th 2024, changes in the `mbedtls` lybrary caused this pr
 
 
 ## Using this project in your ESP32 board
-<b>Programming de ESP32 board:</b>
--Go to the [latest release](https://github.com/gamemoddesignbr/GameMod_ESP32-S2-S3_PS4_Server_900u/releases/latest) page, download the most recent <b>GameMod_ESP32S2-S3_PS4Server900u_DDMMYYYY.zip</b>, extract it to your computer.
--Download the [latest NodeMCU-PyFlasher](https://github.com/marcelstoer/nodemcu-pyflasher/releases/latest) and flash the <b>GameMod_ESP32-S2-S3_PS4_Server_900u.bin</b>
+<b>Programming de ESP32 board:</b><br>
+-Go to the [latest release](https://github.com/gamemoddesignbr/GameMod_ESP32-S2-S3_PS4_Server_900u/releases/latest) page, download the most recent <b>GameMod_ESP32S2-S3_PS4Server900u_DDMMYYYY.zip</b>, extract it to your computer.<br>
+-Download the [latest NodeMCU-PyFlasher](https://github.com/marcelstoer/nodemcu-pyflasher/releases/latest) and flash the <b>GameMod_ESP32-S2-S3_PS4_Server_900u.ino.merged.bin</b> file to your board using the parameters in the image below.<br>
 <img src=https://github.com/gamemoddesignbr/GameMod_ESP32-S2-S3_PS4_Server_900u/blob/main/images/nodemcu_pyflasher.png>
 
 
-<b>Uploading the necessary files:</b>
--Connect to the WiFi access point with a PC/laptop (<b>GameMod_PS4_WiFi</b> is the default SSID and <b>123456789</b> is the default password).
--Use a web browser and go to http://10.1.1.1/admin.html (http://ps4.local).
--On the side menu of the admin page select <b>File Uploader</b>, then click <b>Select Files</b> and locate the <b>data</b> folder inside the <b>GameMod_ESP32-S2-S3_PS4_Server_900u</b> folder.
+<b>Uploading the necessary files:</b><br>
+-Connect to the board WiFi access point with a PC/laptop (<b>GameMod_PS4_WiFi</b> is the default SSID and <b>123456789</b> is the default password).<br>
+-Use a web browser and go to http://10.1.1.1/admin.html (http://ps4.local).<br>
+-On the side menu of the admin page select <b>File Uploader</b>, then click <b>Select Files</b> and locate the <b>data</b> folder inside the <b>GameMod_ESP32-S2-S3_PS4_Server_900u</b> folder.<br>
 -Select all files and click <b>Upload Files</b>.
 
 
@@ -82,25 +82,27 @@ You can access the admin page and your ESP32 to be used as a Access Point (AP) a
 ## Tested Boards
 These [ESP32-S2](https://www.espressif.com/en/products/socs/esp32-s2) boards can be used for a plug and play setup (no wiring)
 
-4MB boards
-:ok: [S2 Mini](https://www.wemos.cc/en/latest/s2/s2_mini.html)
-:ok: [TinyS2](https://unexpectedmaker.com/tinys2)
-:ok: [Adafruit QT Py ESP32-S2](https://www.adafruit.com/product/5325)
-:ok: [ESP32-S2-DevKitC-1](https://docs.espressif.com/projects/esp-idf/en/latest/esp32s2/hw-reference/esp32s2/user-guide-s2-devkitc-1.html)
-:ok: [LILYGO TTGO T8 ESP32-S2 WOOR](http://www.lilygo.cn/prod_view.aspx?TypeId=50063&Id=1320&FId=t3:50063:3)
-:ok: [LILYGO TTGO T8 TF Card Slot](http://www.lilygo.cn/prod_view.aspx?TypeId=50063&Id=1300&FId=t3:50063:3)
+4MB boards<br>
+:ok: [S2 Mini](https://www.wemos.cc/en/latest/s2/s2_mini.html)<br>
+:ok: [TinyS2](https://unexpectedmaker.com/tinys2)<br>
+:ok: [Adafruit QT Py ESP32-S2](https://www.adafruit.com/product/5325)<br>
+:ok: [ESP32-S2-DevKitC-1](https://docs.espressif.com/projects/esp-idf/en/latest/esp32s2/hw-reference/esp32s2/user-guide-s2-devkitc-1.html)<br>
+:ok: [LILYGO TTGO T8 ESP32-S2 WOOR](http://www.lilygo.cn/prod_view.aspx?TypeId=50063&Id=1320&FId=t3:50063:3)<br>
+:ok: [LILYGO TTGO T8 TF Card Slot](http://www.lilygo.cn/prod_view.aspx?TypeId=50063&Id=1300&FId=t3:50063:3)<br>
 
-16MB boards
+16MB boards<br>
 :ok: [FeatherS2](https://feathers2.io/)
 
-<hr>These [ESP32-S2](https://www.espressif.com/en/products/socs/esp32-s2) boards will need a USB type A plug wired up to them.
+<hr>
+These [ESP32-S2](https://www.espressif.com/en/products/socs/esp32-s2) boards will need a USB type A plug wired up to them.
 
-4MB boards
-:ok: [ESP32-S2-DevKitM-1](https://docs.espressif.com/projects/esp-idf/en/latest/esp32s2/hw-reference/esp32s2/user-guide-devkitm-1-v1.html) Wiring [Diagram](https://github.com/stooged/ESP32-Server-900u/blob/main/Images/esp32-s2-devkitm-1.jpg)
-:ok: [ESP32-S2-Saola-1](https://docs.espressif.com/projects/esp-idf/en/latest/esp32s2/hw-reference/esp32s2/user-guide-saola-1-v1.2.html) Wiring [Diagram](https://github.com/stooged/ESP32-Server-900u/blob/main/Images/esp32-s2-saola-1.jpg)
-:ok: [Ai-thinker ESP 12K](https://docs.ai-thinker.com/en/12k_development_board_esp32-s2) Wiring [Diagram](https://github.com/stooged/ESP32-Server-900u/blob/main/Images/ai-thinker-esp12k.jpg)
+4MB boards<br>
+:ok: [ESP32-S2-DevKitM-1](https://docs.espressif.com/projects/esp-idf/en/latest/esp32s2/hw-reference/esp32s2/user-guide-devkitm-1-v1.html) Wiring [Diagram](https://github.com/stooged/ESP32-Server-900u/blob/main/Images/esp32-s2-devkitm-1.jpg)<br>
+:ok: [ESP32-S2-Saola-1](https://docs.espressif.com/projects/esp-idf/en/latest/esp32s2/hw-reference/esp32s2/user-guide-saola-1-v1.2.html) Wiring [Diagram](https://github.com/stooged/ESP32-Server-900u/blob/main/Images/esp32-s2-saola-1.jpg)<br>
+:ok: [Ai-thinker ESP 12K](https://docs.ai-thinker.com/en/12k_development_board_esp32-s2) Wiring [Diagram](https://github.com/stooged/ESP32-Server-900u/blob/main/Images/ai-thinker-esp12k.jpg)<br>
 
-<hr>These [ESP32-S3](https://www.espressif.com/en/products/socs/esp32-s3) boards can be used for a plug and play setup (no wiring)
+<hr>
+These [ESP32-S3](https://www.espressif.com/en/products/socs/esp32-s3) boards can be used for a plug and play setup (no wiring)
 :ok: [ESP32-S3-DevKitC-1](https://docs.espressif.com/projects/esp-idf/en/latest/esp32s3/hw-reference/esp32s3/user-guide-devkitc-1.html)
 
 
