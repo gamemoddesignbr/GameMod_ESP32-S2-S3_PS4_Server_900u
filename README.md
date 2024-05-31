@@ -78,8 +78,18 @@ PS: As of today (May, 29th 2024, changes in the `mbedtls` lybrary caused this pr
 You can access the admin page and your ESP32 to be used as a Access Point (AP) and have your PS4 completely offline, or configure the ESP32 to connect to your WiFi (specifiying a static IP) so your PS4 could be connected to the same WiFi and still use the ESP32 for exploit and keep access to the internet.
 
 
+## Board LED configuration
+The project allows you to have a LED to inform you the board status.
+Depending on the board you're using it could have a built in LED you could use. If the board doesn't have any built in LED, just mod it and use one of the I/O pins to drive the LED you added.
+Then configure the board to use the I/O PIN you want (or the built in I/O pin the built in LED is using) and enable the LED usage.
+The LED status will be as the following:
+-Three quick blinks: the board is booting<br>
+-Intermitently blinking: the board finished booting and it's configured as Access Point<br>
+-Solid: the board finished booting and it's configured as WiFi connection.
+
+
 ## Tested Boards
-These [ESP32-S2](https://www.espressif.com/en/products/socs/esp32-s2) boards can be used for a plug and play setup (no wiring)
+:white_check_mark: These [ESP32-S2](https://www.espressif.com/en/products/socs/esp32-s2) boards can be used for a plug and play setup (no wiring)
 
 4MB boards<br>
 :ok: [S2 Mini](https://www.wemos.cc/en/latest/s2/s2_mini.html)<br>
@@ -92,14 +102,14 @@ These [ESP32-S2](https://www.espressif.com/en/products/socs/esp32-s2) boards can
 16MB boards<br>
 :ok: [FeatherS2](https://feathers2.io/)
 
-These [ESP32-S2](https://www.espressif.com/en/products/socs/esp32-s2) boards will need a USB type A plug wired up to them.<br>
+:white_check_mark: These [ESP32-S2](https://www.espressif.com/en/products/socs/esp32-s2) boards will need a USB type A plug wired up to them.<br>
 
 4MB boards<br>
 :ok: [ESP32-S2-DevKitM-1](https://docs.espressif.com/projects/esp-idf/en/latest/esp32s2/hw-reference/esp32s2/user-guide-devkitm-1-v1.html) Wiring [Diagram](https://github.com/stooged/ESP32-Server-900u/blob/main/Images/esp32-s2-devkitm-1.jpg)<br>
 :ok: [ESP32-S2-Saola-1](https://docs.espressif.com/projects/esp-idf/en/latest/esp32s2/hw-reference/esp32s2/user-guide-saola-1-v1.2.html) Wiring [Diagram](https://github.com/stooged/ESP32-Server-900u/blob/main/Images/esp32-s2-saola-1.jpg)<br>
 :ok: [Ai-thinker ESP 12K](https://docs.ai-thinker.com/en/12k_development_board_esp32-s2) Wiring [Diagram](https://github.com/stooged/ESP32-Server-900u/blob/main/Images/ai-thinker-esp12k.jpg)<br>
 
-These [ESP32-S3](https://www.espressif.com/en/products/socs/esp32-s3) boards can be used for a plug and play setup (no wiring)
+:white_check_mark: These [ESP32-S3](https://www.espressif.com/en/products/socs/esp32-s3) boards can be used for a plug and play setup (no wiring)
 
 :ok: [ESP32-S3-DevKitC-1](https://docs.espressif.com/projects/esp-idf/en/latest/esp32s3/hw-reference/esp32s3/user-guide-devkitc-1.html)
 
@@ -116,19 +126,19 @@ These [ESP32-S3](https://www.espressif.com/en/products/socs/esp32-s3) boards can
 * <b>reboot.html</b> - used to reboot the esp board
 
 
-## Cases
+## 3D Cases
 Stooged has created some basic printable cases for the following boards.
 These cases can be printed in PLA without supports.
 
 ### ESP32-S2 Boards
-[Adafruit QT Py](https://github.com/stooged/ESP32-Server-900u/tree/main/3D_Printed_Cases/Adafruit_QT_Py)
-[UM FeatherS2](https://github.com/stooged/ESP32-Server-900u/tree/main/3D_Printed_Cases/UM_FeatherS2)
-[UM TinyS2](https://github.com/stooged/ESP32-Server-900u/tree/main/3D_Printed_Cases/UM_TinyS2)
-[Wemos S2 Mini](https://github.com/stooged/ESP32-Server-900u/tree/main/3D_Printed_Cases/Wemos_S2_Mini)
-[DevKitM-1](https://github.com/stooged/ESP32-Server-900u/tree/main/3D_Printed_Cases/DevKitM_1)
-[ESP32-S2-Saola-1](https://github.com/stooged/ESP32-Server-900u/tree/main/3D_Printed_Cases/ESP32_S2_Saola_1)
-[LILYGO-TTGO-T8-TF-Card-Slot](https://github.com/stooged/ESP32-Server-900u/tree/main/3D_Printed_Cases/LILYGO_TTGO_T8_TF_Card_Slot)
-[LILYGO-TTGO-T8-WOOR](https://github.com/stooged/ESP32-Server-900u/tree/main/3D_Printed_Cases/LILYGO_TTGO_T8_WOOR)
+[Adafruit QT Py](https://github.com/stooged/ESP32-Server-900u/tree/main/3D_Printed_Cases/Adafruit_QT_Py)<br>
+[UM FeatherS2](https://github.com/stooged/ESP32-Server-900u/tree/main/3D_Printed_Cases/UM_FeatherS2)<br>
+[UM TinyS2](https://github.com/stooged/ESP32-Server-900u/tree/main/3D_Printed_Cases/UM_TinyS2)<br>
+[Wemos S2 Mini](https://github.com/stooged/ESP32-Server-900u/tree/main/3D_Printed_Cases/Wemos_S2_Mini)<br>
+[DevKitM-1](https://github.com/stooged/ESP32-Server-900u/tree/main/3D_Printed_Cases/DevKitM_1)<br>
+[ESP32-S2-Saola-1](https://github.com/stooged/ESP32-Server-900u/tree/main/3D_Printed_Cases/ESP32_S2_Saola_1)<br>
+[LILYGO-TTGO-T8-TF-Card-Slot](https://github.com/stooged/ESP32-Server-900u/tree/main/3D_Printed_Cases/LILYGO_TTGO_T8_TF_Card_Slot)<br>
+[LILYGO-TTGO-T8-WOOR](https://github.com/stooged/ESP32-Server-900u/tree/main/3D_Printed_Cases/LILYGO_TTGO_T8_WOOR)<br>
 
 
 ### ESP32-S3 Boards
