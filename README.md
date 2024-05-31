@@ -50,8 +50,7 @@ Then go to the "<b>Boards Manager</b> and install or update the "<b>ESP32</b>" c
 If you have problems with the board being identified/found in windows then you might need to install the [USB to UART Bridge](https://www.silabs.com/developers/usb-to-uart-bridge-vcp-drivers) drivers.
 
 
-PS: As of today (May, 29th 2024, changes in the `mbedtls` lybrary caused this project to not compile correctly and some changes in the <b>ESPAsyncWebSrv</b> need to be made:
-
+PS: As of today (May, 29th 2024, changes in the `mbedtls` lybrary caused this project to not compile correctly and some changes in the <b>ESPAsyncWebSrv</b> need to be made:<br>
 -Inside <b>WebAuthentication.cpp</b> change the `mbedtls_md5_starts_ret` call to `mbedtls_md5_starts`.<br>
 -Inside <b>WebAuthentication.cpp</b> change the `mbedtls_md5_update_ret` call to `mbedtls_md5_update`.<br>
 -Inside <b>WebAuthentication.cpp</b> change the `mbedtls_md5_finish_ret` call to `mbedtls_md5_finish`.<br>
@@ -93,16 +92,15 @@ These [ESP32-S2](https://www.espressif.com/en/products/socs/esp32-s2) boards can
 16MB boards<br>
 :ok: [FeatherS2](https://feathers2.io/)
 
-<hr>
-These [ESP32-S2](https://www.espressif.com/en/products/socs/esp32-s2) boards will need a USB type A plug wired up to them.
+These [ESP32-S2](https://www.espressif.com/en/products/socs/esp32-s2) boards will need a USB type A plug wired up to them.<br>
 
 4MB boards<br>
 :ok: [ESP32-S2-DevKitM-1](https://docs.espressif.com/projects/esp-idf/en/latest/esp32s2/hw-reference/esp32s2/user-guide-devkitm-1-v1.html) Wiring [Diagram](https://github.com/stooged/ESP32-Server-900u/blob/main/Images/esp32-s2-devkitm-1.jpg)<br>
 :ok: [ESP32-S2-Saola-1](https://docs.espressif.com/projects/esp-idf/en/latest/esp32s2/hw-reference/esp32s2/user-guide-saola-1-v1.2.html) Wiring [Diagram](https://github.com/stooged/ESP32-Server-900u/blob/main/Images/esp32-s2-saola-1.jpg)<br>
 :ok: [Ai-thinker ESP 12K](https://docs.ai-thinker.com/en/12k_development_board_esp32-s2) Wiring [Diagram](https://github.com/stooged/ESP32-Server-900u/blob/main/Images/ai-thinker-esp12k.jpg)<br>
 
-<hr>
 These [ESP32-S3](https://www.espressif.com/en/products/socs/esp32-s3) boards can be used for a plug and play setup (no wiring)
+
 :ok: [ESP32-S3-DevKitC-1](https://docs.espressif.com/projects/esp-idf/en/latest/esp32s3/hw-reference/esp32s3/user-guide-devkitc-1.html)
 
 
