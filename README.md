@@ -42,12 +42,12 @@ If you're using a <b>ESP32-S2</b> you'd not need a USB drive with this project a
 
 
 ## Libraries needed to compile this project
-This project is built using <b><a href=https://github.com/me-no-dev/ESPAsyncWebServer>ESPAsyncWebSrv</a></b> and <b><a href=https://github.com/me-no-dev/AsyncTCP>AsyncTCP</a></b> so you need to add these libraries to your Arduino IDE.
+This project is built using <b>[ESPAsyncWebSrv]</b>(https://github.com/me-no-dev/ESPAsyncWebServer) and <b>[AsyncTCP]</b>(https://github.com/me-no-dev/AsyncTCP) so you need to add these libraries to your Arduino IDE.
 
-Install or update the ESP32 core by adding this URL to the <a href=https://docs.arduino.cc/learn/starting-guide/cores>Additional Boards Manager URLs</a> section in the Arduino IDE "<b>Preferences</b>".
+Install or update the ESP32 core by adding [this URL](https://raw.githubusercontent.com/espressif/arduino-esp32/gh-pages/package_esp32_index.json) to the Additional Boards Manager URLs section in the Arduino IDE "<b>Preferences</b>".
 Then go to the "<b>Boards Manager</b> and install or update the "<b>ESP32</b>" core.
 
-If you have problems with the board being identified/found in windows then you might need to install the <a href=https://www.silabs.com/developers/usb-to-uart-bridge-vcp-drivers>USB to UART Bridge</a> drivers.
+If you have problems with the board being identified/found in windows then you might need to install the [USB to UART Bridge](https://www.silabs.com/developers/usb-to-uart-bridge-vcp-drivers) drivers.
 
 
 PS: As of today (May, 29th 2024, changes in the `mbedtls` lybrary caused this project to not compile correctly and some changes in the <b>ESPAsyncWebSrv</b> need to be made:
@@ -86,26 +86,28 @@ You can access the admin page and your ESP32 to be used as a Access Point (AP) a
 
 
 ## Tested Boards
-These <a href=https://www.espressif.com/en/products/socs/esp32-s2>ESP32-S2</a> boards can be used for a plug and play setup (no wiring)
+These [ESP32-S2](https://www.espressif.com/en/products/socs/esp32-s2) boards can be used for a plug and play setup (no wiring)
 
 4MB boards
-:ok: <a href=https://www.wemos.cc/en/latest/s2/s2_mini.html>S2 Mini</a>
-:ok: <a href=https://unexpectedmaker.com/tinys2>TinyS2</a>
-:ok: <a href="https://www.adafruit.com/product/5325">Adafruit QT Py ESP32-S2</a>
-:ok: <a href=https://docs.espressif.com/projects/esp-idf/en/latest/esp32s2/hw-reference/esp32s2/user-guide-s2-devkitc-1.html>ESP32-S2-DevKitC-1</a>
-:ok: <a href="http://www.lilygo.cn/prod_view.aspx?TypeId=50063&Id=1320&FId=t3:50063:3">LILYGO TTGO T8 ESP32-S2 WOOR</a>
-:ok: <a href="http://www.lilygo.cn/prod_view.aspx?TypeId=50063&Id=1300&FId=t3:50063:3">LILYGO TTGO T8 TF Card Slot</a>
+:ok: [S2 Mini](https://www.wemos.cc/en/latest/s2/s2_mini.html)
+:ok: [TinyS2](https://unexpectedmaker.com/tinys2)
+:ok: [Adafruit QT Py ESP32-S2](https://www.adafruit.com/product/5325)
+:ok: [ESP32-S2-DevKitC-1](https://docs.espressif.com/projects/esp-idf/en/latest/esp32s2/hw-reference/esp32s2/user-guide-s2-devkitc-1.html)
+:ok: [LILYGO TTGO T8 ESP32-S2 WOOR](http://www.lilygo.cn/prod_view.aspx?TypeId=50063&Id=1320&FId=t3:50063:3)
+:ok: [LILYGO TTGO T8 TF Card Slot](http://www.lilygo.cn/prod_view.aspx?TypeId=50063&Id=1300&FId=t3:50063:3)
+
 16MB boards
-:ok: <a href=https://feathers2.io/>FeatherS2</a>
-<hr>These <a href=https://www.espressif.com/en/products/socs/esp32-s2>ESP32-S2</a> boards will need a USB type A plug wired up to them.
+:ok: [FeatherS2](https://feathers2.io/)
+
+<hr>These [ESP32-S2](https://www.espressif.com/en/products/socs/esp32-s2) boards will need a USB type A plug wired up to them.
 
 4MB boards
-:ok: <a href=https://docs.espressif.com/projects/esp-idf/en/latest/esp32s2/hw-reference/esp32s2/user-guide-devkitm-1-v1.html>ESP32-S2-DevKitM-1</a> Wiring <a href=https://github.com/stooged/ESP32-Server-900u/blob/main/Images/esp32-s2-devkitm-1.jpg>Diagram</a>
-:ok: <a href=https://docs.espressif.com/projects/esp-idf/en/latest/esp32s2/hw-reference/esp32s2/user-guide-saola-1-v1.2.html>ESP32-S2-Saola-1</a> Wiring <a href=https://github.com/stooged/ESP32-Server-900u/blob/main/Images/esp32-s2-saola-1.jpg>Diagram</a>
-:ok: <a href=https://docs.ai-thinker.com/en/12k_development_board_esp32-s2>Ai-thinker ESP 12K</a> Wiring <a href=https://github.com/stooged/ESP32-Server-900u/blob/main/Images/ai-thinker-esp12k.jpg>Diagram</a>
+:ok: [ESP32-S2-DevKitM-1](https://docs.espressif.com/projects/esp-idf/en/latest/esp32s2/hw-reference/esp32s2/user-guide-devkitm-1-v1.html) Wiring [Diagram](https://github.com/stooged/ESP32-Server-900u/blob/main/Images/esp32-s2-devkitm-1.jpg)
+:ok: [ESP32-S2-Saola-1](https://docs.espressif.com/projects/esp-idf/en/latest/esp32s2/hw-reference/esp32s2/user-guide-saola-1-v1.2.html) Wiring [Diagram](https://github.com/stooged/ESP32-Server-900u/blob/main/Images/esp32-s2-saola-1.jpg)
+:ok: [Ai-thinker ESP 12K](https://docs.ai-thinker.com/en/12k_development_board_esp32-s2) Wiring [Diagram](https://github.com/stooged/ESP32-Server-900u/blob/main/Images/ai-thinker-esp12k.jpg)
 
-<hr>These <a href=https://www.espressif.com/en/products/socs/esp32-s3>ESP32-S3</a> boards can be used for a plug and play setup (no wiring)
-:ok: <a href=https://docs.espressif.com/projects/esp-idf/en/latest/esp32s3/hw-reference/esp32s3/user-guide-devkitc-1.html>ESP32-S3-DevKitC-1</a>.
+<hr>These [ESP32-S3](https://www.espressif.com/en/products/socs/esp32-s3) boards can be used for a plug and play setup (no wiring)
+:ok: [ESP32-S3-DevKitC-1](https://docs.espressif.com/projects/esp-idf/en/latest/esp32s3/hw-reference/esp32s3/user-guide-devkitc-1.html)
 
 
 ## Internal pages
@@ -125,21 +127,21 @@ Stooged has created some basic printable cases for the following boards.
 These cases can be printed in PLA without supports.
 
 ### ESP32-S2 Boards
-<a href=https://github.com/stooged/ESP32-Server-900u/tree/main/3D_Printed_Cases/Adafruit_QT_Py>Adafruit QT Py</a>
-<a href=https://github.com/stooged/ESP32-Server-900u/tree/main/3D_Printed_Cases/UM_FeatherS2>UM FeatherS2</a>
-<a href=https://github.com/stooged/ESP32-Server-900u/tree/main/3D_Printed_Cases/UM_TinyS2>UM TinyS2</a>
-<a href=https://github.com/stooged/ESP32-Server-900u/tree/main/3D_Printed_Cases/Wemos_S2_Mini>Wemos S2 Mini</a>
-<a href=https://github.com/stooged/ESP32-Server-900u/tree/main/3D_Printed_Cases/DevKitM_1>DevKitM-1</a>
-<a href=https://github.com/stooged/ESP32-Server-900u/tree/main/3D_Printed_Cases/ESP32_S2_Saola_1>ESP32-S2-Saola-1</a>
-<a href=https://github.com/stooged/ESP32-Server-900u/tree/main/3D_Printed_Cases/LILYGO_TTGO_T8_TF_Card_Slot>LILYGO-TTGO-T8-TF-Card-Slot</a>
-<a href=https://github.com/stooged/ESP32-Server-900u/tree/main/3D_Printed_Cases/LILYGO_TTGO_T8_WOOR>LILYGO-TTGO-T8-WOOR</a>
+[Adafruit QT Py](https://github.com/stooged/ESP32-Server-900u/tree/main/3D_Printed_Cases/Adafruit_QT_Py)
+[UM FeatherS2](https://github.com/stooged/ESP32-Server-900u/tree/main/3D_Printed_Cases/UM_FeatherS2)
+[UM TinyS2](https://github.com/stooged/ESP32-Server-900u/tree/main/3D_Printed_Cases/UM_TinyS2)
+[Wemos S2 Mini](https://github.com/stooged/ESP32-Server-900u/tree/main/3D_Printed_Cases/Wemos_S2_Mini)
+[DevKitM-1](https://github.com/stooged/ESP32-Server-900u/tree/main/3D_Printed_Cases/DevKitM_1)
+[ESP32-S2-Saola-1](https://github.com/stooged/ESP32-Server-900u/tree/main/3D_Printed_Cases/ESP32_S2_Saola_1)
+[LILYGO-TTGO-T8-TF-Card-Slot](https://github.com/stooged/ESP32-Server-900u/tree/main/3D_Printed_Cases/LILYGO_TTGO_T8_TF_Card_Slot)
+[LILYGO-TTGO-T8-WOOR](https://github.com/stooged/ESP32-Server-900u/tree/main/3D_Printed_Cases/LILYGO_TTGO_T8_WOOR)
 
 
 ### ESP32-S3 Boards
-<a href=https://github.com/stooged/ESP32-Server-900u/tree/main/3D_Printed_Cases/S3_DevKitC_1>S3_DevKitC_1</a>
+[S3_DevKitC_1](https://github.com/stooged/ESP32-Server-900u/tree/main/3D_Printed_Cases/S3_DevKitC_1)
 
 
 ### ESP32 Boards
-<a href=https://github.com/stooged/ESP32-Server-900u/tree/main/3D_Printed_Cases/NodeMCU_32>NodeMCU-32</a>
+[NodeMCU-32](https://github.com/stooged/ESP32-Server-900u/tree/main/3D_Printed_Cases/NodeMCU_32)
 
-If you wish to edit the cases you can import the `.stl` files into <a href=https://www.tinkercad.com/>Tinkercad<a/> and edit them to suit your needs.
+If you wish to edit the cases you can import the `.stl` files into [Tinkercad](https://www.tinkercad.com/) and edit them to suit your needs.
