@@ -79,9 +79,9 @@ You can access the admin page and your ESP32 to be used as a Access Point (AP) a
 
 
 ## Board LED configuration
-The project allows you to have a LED to inform you the board status.
-Depending on the board you're using it could have a built in LED you could use. If the board doesn't have any built in LED, just mod it and use one of the I/O pins to drive the LED you added.
-Then configure the board to use the I/O PIN you want (or the built in I/O pin the built in LED is using) and enable the LED usage.
+The project allows you to have a LED to inform you the board status.<br>
+Depending on the board you're using it could have a built in LED you could use. If the board doesn't have any built in LED, just mod it and use one of the I/O pins to drive the LED you added.<br>
+Then configure the board to use the I/O PIN you want (or the built in I/O pin the built in LED is using) and enable the LED usage.<br><br>
 The LED status will be as the following:
 -Three quick blinks: the board is booting<br>
 -Intermitently blinking: the board finished booting and it's configured as Access Point<br>
