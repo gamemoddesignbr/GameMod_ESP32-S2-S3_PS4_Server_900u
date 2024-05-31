@@ -4,10 +4,10 @@
 <img src="./images/ps4serverlogo.png" alight-itens="center">
 </div>
 
-[![GitHub contributors](https://img.shields.io/github/contributors/gamemoddesignbr/gmpack)](https://github.com/gamemoddesignbr/gmpack/graphs/contributors)
-[![GitHub All Releases](https://img.shields.io/github/downloads/gamemoddesignbr/gmpack/total)](https://github.com/gamemoddesignbr/gmpack/releases)
-[![Latest release](https://img.shields.io/github/v/release/gamemoddesignbr/gmpack)](https://github.com/gamemoddesignbr/gmpack/releases)
-[![GitHub issues](https://img.shields.io/github/issues/gamemoddesignbr/gmpack)](https://github.com/gamemoddesignbr/gmpack/issues)
+[![GitHub contributors](https://img.shields.io/github/contributors/gamemoddesignbr/GameMod_ESP32-S2-S3_PS4_Server_900u)](https://github.com/gamemoddesignbr/GameMod_ESP32-S2-S3_PS4_Server_900u/graphs/contributors)
+[![GitHub All Releases](https://img.shields.io/github/downloads/gamemoddesignbr/GameMod_ESP32-S2-S3_PS4_Server_900u/total)](https://github.com/gamemoddesignbr/GameMod_ESP32-S2-S3_PS4_Server_900u/releases)
+[![Latest release](https://img.shields.io/github/v/release/gamemoddesignbr/GameMod_ESP32-S2-S3_PS4_Server_900u)](https://github.com/gamemoddesignbr/GameMod_ESP32-S2-S3_PS4_Server_900u/releases)
+[![GitHub issues](https://img.shields.io/github/issues/gamemoddesignbr/GameMod_ESP32-S2-S3_PS4_Server_900u)](https://github.com/gamemoddesignbr/GameMod_ESP32-S2-S3_PS4_Server_900u/issues)
 
 Modded PS4 900FW Auto Host For ESP32-S2/S3 Boards Based on Stooged's ["ESP32 Server 9.00u"](https://github.com/stooged/ESP32-Server-900u) and MUXI's ["MUXI900u"](https://psxtools.de/forum/index.php?thread/89778-ps4-exploit-muxi900u-mit-usb-emulation-f%C3%BCr-esp32-s2-s3/).
 
@@ -53,11 +53,17 @@ If you have problems with the board being identified/found in windows then you m
 PS: As of today (May, 29th 2024, changes in the `mbedtls` lybrary caused this project to not compile correctly and some changes in the <b>ESPAsyncWebSrv</b> need to be made:
 
 -Inside <b>WebAuthentication.cpp</b> change the `mbedtls_md5_starts_ret` call to `mbedtls_md5_starts`.
+
 -Inside <b>WebAuthentication.cpp</b> change the `mbedtls_md5_update_ret` call to `mbedtls_md5_update`.
+
 -Inside <b>WebAuthentication.cpp</b> change the `mbedtls_md5_finish_ret` call to `mbedtls_md5_finish`.
+
 -Inside <b>AsyncWebSocket.cpp</b> change the `mbedtls_sha1_starts_ret` call to `mbedtls_sha1_starts`.
+
 -Inside <b>AsyncWebSocket.cpp</b> change the `mbedtls_sha1_update_ret` call to `mbedtls_sha1_update`.
+
 -Inside <b>AsyncWebSocket.cpp</b> change the `mbedtls_sha1_finish_ret` call to `mbedtls_sha1_finish`.
+
 -Inside <b>AsyncEventSource.cpp</b> comment out the line `ets_printf("ERROR: Too many messages queued\n");`.
 
 
