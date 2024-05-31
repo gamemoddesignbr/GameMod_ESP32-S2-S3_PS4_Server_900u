@@ -42,7 +42,7 @@ If you're using a <b>ESP32-S2</b> you'd not need a USB drive with this project a
 
 
 ## Libraries needed to compile this project
-This project is built using <b>[ESPAsyncWebSrv]</b>(https://github.com/me-no-dev/ESPAsyncWebServer) and <b>[AsyncTCP]</b>(https://github.com/me-no-dev/AsyncTCP) so you need to add these libraries to your Arduino IDE.
+This project is built using [<b>ESPAsyncWebSrv</b>](https://github.com/me-no-dev/ESPAsyncWebServer) and [<b>AsyncTCP</b>](https://github.com/me-no-dev/AsyncTCP) so you need to add these libraries to your Arduino IDE.
 
 Install or update the ESP32 core by adding [this URL](https://raw.githubusercontent.com/espressif/arduino-esp32/gh-pages/package_esp32_index.json) to the Additional Boards Manager URLs section in the Arduino IDE "<b>Preferences</b>".
 Then go to the "<b>Boards Manager</b> and install or update the "<b>ESP32</b>" core.
@@ -52,18 +52,12 @@ If you have problems with the board being identified/found in windows then you m
 
 PS: As of today (May, 29th 2024, changes in the `mbedtls` lybrary caused this project to not compile correctly and some changes in the <b>ESPAsyncWebSrv</b> need to be made:
 
--Inside <b>WebAuthentication.cpp</b> change the `mbedtls_md5_starts_ret` call to `mbedtls_md5_starts`.
-
--Inside <b>WebAuthentication.cpp</b> change the `mbedtls_md5_update_ret` call to `mbedtls_md5_update`.
-
--Inside <b>WebAuthentication.cpp</b> change the `mbedtls_md5_finish_ret` call to `mbedtls_md5_finish`.
-
--Inside <b>AsyncWebSocket.cpp</b> change the `mbedtls_sha1_starts_ret` call to `mbedtls_sha1_starts`.
-
--Inside <b>AsyncWebSocket.cpp</b> change the `mbedtls_sha1_update_ret` call to `mbedtls_sha1_update`.
-
--Inside <b>AsyncWebSocket.cpp</b> change the `mbedtls_sha1_finish_ret` call to `mbedtls_sha1_finish`.
-
+-Inside <b>WebAuthentication.cpp</b> change the `mbedtls_md5_starts_ret` call to `mbedtls_md5_starts`.<br>
+-Inside <b>WebAuthentication.cpp</b> change the `mbedtls_md5_update_ret` call to `mbedtls_md5_update`.<br>
+-Inside <b>WebAuthentication.cpp</b> change the `mbedtls_md5_finish_ret` call to `mbedtls_md5_finish`.<br>
+-Inside <b>AsyncWebSocket.cpp</b> change the `mbedtls_sha1_starts_ret` call to `mbedtls_sha1_starts`.<br>
+-Inside <b>AsyncWebSocket.cpp</b> change the `mbedtls_sha1_update_ret` call to `mbedtls_sha1_update`.<br>
+-Inside <b>AsyncWebSocket.cpp</b> change the `mbedtls_sha1_finish_ret` call to `mbedtls_sha1_finish`.<br>
 -Inside <b>AsyncEventSource.cpp</b> comment out the line `ets_printf("ERROR: Too many messages queued\n");`.
 
 
