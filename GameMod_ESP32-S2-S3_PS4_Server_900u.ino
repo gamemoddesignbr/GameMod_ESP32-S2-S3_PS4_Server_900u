@@ -16,8 +16,6 @@
 #error "Selected board not supported"
 #endif
 
-#define LED_PIN 15    // Constant for LED pin
-
                       // use PsFree [ true / false ]
 #define PSFREE false  // use the newer psfree webkit exploit.
                       // this is fairly stable but may fail which will require you to try and load the payload again.
@@ -76,6 +74,7 @@ boolean WiFiStarted = false;
 
 //using LED
 boolean useLED = false;
+int LED_PIN = 0;
 
 //time variables
 unsigned long currentMillis;
@@ -416,6 +415,8 @@ void handleConfig(AsyncWebServerRequest * request) {
     String WIFI_PDNS = request -> getParam("wifi_pdns", true) -> value();
     String WIFI_SDNS = request -> getParam("wifi_sdns", true) -> value();
 
+    String tmpLED_PIN = request -> getParam("lediopin", true) -> value();
+
     String tmpua = "false";
     String tmpcw = "false";
     String tmpuw = "false";
@@ -444,7 +445,7 @@ void handleConfig(AsyncWebServerRequest * request) {
     int TIME2SLEEP = request -> getParam("sleeptime", true) -> value().toInt();
     File iniFile = FILESYS.open("/config.ini", "w");
     if (iniFile) {
-      iniFile.print("\r\nAP_SSID=" + AP_SSID + "\r\nAP_PASS=" + AP_PASS + "\r\nWEBSERVER_IP=" + tmpip + "\r\nWEBSERVER_PORT=" + tmpwport + "\r\nSUBNET_MASK=" + tmpsubn + "\r\nWIFI_SSID=" + WIFI_SSID + "\r\nWIFI_PASS=" + WIFI_PASS + "\r\nWIFI_HOST=" + WIFI_HOSTNAME + "\r\nWIFI_LOCALIP=" + WIFI_LOCALIP + "\r\nWIFI_GATEWAY=" + WIFI_GATEWAY + "\r\nWIFI_SUBNET=" + WIFI_SUBNET + "\r\nWIFI_PDNS=" + WIFI_PDNS + "\r\nWIFI_SDNS=" + WIFI_SDNS + "\r\nUSEWF=" + tmpuw + "\r\nUSEAP=" + tmpua + "\r\nCONWIFI=" + tmpcw + "\r\nUSELED=" + tmpUseLED + "\r\nUSBWAIT=" + USB_WAIT + "\r\nESPSLEEP=" + tmpslp + "\r\nSLEEPTIME=" + TIME2SLEEP + "\r\n");
+      iniFile.print("\r\nAP_SSID=" + AP_SSID + "\r\nAP_PASS=" + AP_PASS + "\r\nWEBSERVER_IP=" + tmpip + "\r\nWEBSERVER_PORT=" + tmpwport + "\r\nSUBNET_MASK=" + tmpsubn + "\r\nWIFI_SSID=" + WIFI_SSID + "\r\nWIFI_PASS=" + WIFI_PASS + "\r\nWIFI_HOST=" + WIFI_HOSTNAME + "\r\nWIFI_LOCALIP=" + WIFI_LOCALIP + "\r\nWIFI_GATEWAY=" + WIFI_GATEWAY + "\r\nWIFI_SUBNET=" + WIFI_SUBNET + "\r\nWIFI_PDNS=" + WIFI_PDNS + "\r\nWIFI_SDNS=" + WIFI_SDNS + "\r\nUSEWF=" + tmpuw + "\r\nUSEAP=" + tmpua + "\r\nCONWIFI=" + tmpcw + "\r\nUSELED=" + tmpUseLED + "\r\nLED_PIN=" + tmpLED_PIN + "\r\nUSBWAIT=" + USB_WAIT + "\r\nESPSLEEP=" + tmpslp + "\r\nSLEEPTIME=" + TIME2SLEEP + "\r\n");
       iniFile.close();
     }
     String htmStr = "<!DOCTYPE html><html><head><meta http-equiv=\"refresh\" content=\"8; url=/info.html\"><style type=\"text/css\">#loader {z-index: 1;width: 50px;height: 50px;margin: 0 0 0 0;border: 6px solid #f3f3f3;border-radius: 50%;border-top: 6px solid #3498db;width: 50px;height: 50px;-webkit-animation: spin 2s linear infinite;animation: spin 2s linear infinite; } @-webkit-keyframes spin {0%{-webkit-transform: rotate(0deg);}100%{-webkit-transform: rotate(360deg);}}@keyframes spin{0%{ transform: rotate(0deg);}100%{transform: rotate(360deg);}}body {background-color: #1451AE; color: #ffffff; font-size: 20px; font-weight: bold; margin: 0 0 0 0.0; padding: 0.4em 0.4em 0.4em 0.6em;} #msgfmt {font-size: 16px; font-weight: normal;}#status {font-size: 16px; font-weight: normal;}</style></head><center><br><br><br><br><br><p id=\"status\"><div id='loader'></div><br>Config saved<br>Rebooting</p></center></html>";
@@ -490,7 +491,7 @@ void handleConfigHtml(AsyncWebServerRequest * request) {
     tmpUseLed = "checked";
   }
 
-  String htmStr = "<!DOCTYPE html><html><head><meta name=\"viewport\" content=\"width=device-width, initial-scale=1\"><title>Config Editor</title><style type=\"text/css\">body {background-color: #1451AE; color: #ffffff; font-size: 14px;font-weight: bold;margin: 0 0 0 0.0;padding: 0.4em 0.4em 0.4em 0.6em;}input[type=\"submit\"]:hover {background: #ffffff;color: green;}input[type=\"submit\"]:active{outline-color: green;color: green;background: #ffffff; }table {font-family: arial, sans-serif;border-collapse: collapse;}td {border: 1px solid #dddddd;text-align: left;padding: 8px;}th {border: 1px solid #dddddd; background-color:gray;text-align: center;padding: 8px;}</style></head><body><form action=\"/config.html\" method=\"post\"><center><table><tr><th colspan=\"2\"><center>Access Point</center></th></tr><tr><td>AP SSID:</td><td><input name=\"ap_ssid\" value=\"" + AP_SSID + "\"></td></tr><tr><td>AP PASSWORD:</td><td><input name=\"ap_pass\" value=\"********\"></td></tr><tr><td>AP IP:</td><td><input name=\"web_ip\" value=\"" + Server_IP.toString() + "\"></td></tr><tr><td>SUBNET MASK:</td><td><input name=\"subnet\" value=\"" + Subnet_Mask.toString() + "\"></td></tr><tr><td>START AP:</td><td><input type=\"checkbox\" name=\"useap\" " + tmpUa + "></td></tr><tr><th colspan=\"2\"><center>Web Server</center></th></tr><tr><td>WEBSERVER PORT:</td><td><input name=\"web_port\" value=\"" + String(WEB_PORT) + "\"></td></tr><tr><th colspan=\"2\"><center>Wifi Connection</center></th></tr><tr><td>WIFI SSID:</td><td><input name=\"wifi_ssid\" value=\"" + WIFI_SSID + "\"></td></tr><tr><td>WIFI PASSWORD:</td><td><input name=\"wifi_pass\" value=\"********\"></td></tr><tr><td>WIFI HOSTNAME:</td><td><input name=\"wifi_host\" value=\"" + WIFI_HOSTNAME + "\"></td></tr><tr><td>USE STATIC CONFIGURATION (OPTIONAL)?:</td><td><input type=\"checkbox\" name=\"usewifistaticip\" " + tmpUseWF + "></td></tr><tr><td>WIFI STATIC IP:</td><td><input name=\"wifi_local_ip\" value=\"" + WIFI_LOCALIP.toString() + "\"></td></tr><tr><td>WIFI GATEWAY:</td><td><input name=\"wifi_gateway\" value=\"" + WIFI_GATEWAY.toString() + "\"></td></tr><tr><td>WIFI SUBNET MASK:</td><td><input name=\"wifi_subnet\" value=\"" + WIFI_SUBNET.toString() + "\"></td></tr><tr><td>WIFI P. DNS:</td><td><input name=\"wifi_pdns\" value=\"" + WIFI_PDNS.toString() + "\"></td></tr><tr><td>WIFI S. DNS:</td><td><input name=\"wifi_sdns\" value=\"" + WIFI_SDNS.toString() + "\"></td></tr><tr><td>CONNECT WIFI:</td><td><input type=\"checkbox\" name=\"usewifi\" " + tmpCw + "></td></tr><tr><th colspan=\"2\"><center>Board LED</center></th></tr><tr><td>USE LED?:</td><td><input type=\"checkbox\" name=\"useled\" " + tmpUseLed + "></td></tr><tr><th colspan=\"2\"><center>Auto USB Wait</center></th></tr><tr><td>WAIT TIME(ms):</td><td><input name=\"usbwait\" value=\"" + USB_WAIT + "\"></td></tr><tr><th colspan=\"2\"><center>ESP Sleep Mode</center></th></tr><tr><td>ENABLE SLEEP:</td><td><input type=\"checkbox\" name=\"espsleep\" " + tmpSlp + "></td></tr><tr><td>TIME TO SLEEP(minutes):</td><td><input name=\"sleeptime\" value=\"" + TIME2SLEEP + "\"></td></tr></table><br><input id=\"savecfg\" type=\"submit\" value=\"Save Config\"></center></form></body></html>";
+  String htmStr = "<!DOCTYPE html><html><head><meta name=\"viewport\" content=\"width=device-width, initial-scale=1\"><title>Config Editor</title><style type=\"text/css\">body {background-color: #1451AE; color: #ffffff; font-size: 14px;font-weight: bold;margin: 0 0 0 0.0;padding: 0.4em 0.4em 0.4em 0.6em;}input[type=\"submit\"]:hover {background: #ffffff;color: green;}input[type=\"submit\"]:active{outline-color: green;color: green;background: #ffffff; }table {font-family: arial, sans-serif;border-collapse: collapse;}td {border: 1px solid #dddddd;text-align: left;padding: 8px;}th {border: 1px solid #dddddd; background-color:gray;text-align: center;padding: 8px;}</style></head><body><form action=\"/config.html\" method=\"post\"><center><table><tr><th colspan=\"2\"><center>Access Point</center></th></tr><tr><td>AP SSID:</td><td><input name=\"ap_ssid\" value=\"" + AP_SSID + "\"></td></tr><tr><td>AP PASSWORD:</td><td><input name=\"ap_pass\" value=\"********\"></td></tr><tr><td>AP IP:</td><td><input name=\"web_ip\" value=\"" + Server_IP.toString() + "\"></td></tr><tr><td>SUBNET MASK:</td><td><input name=\"subnet\" value=\"" + Subnet_Mask.toString() + "\"></td></tr><tr><td>START AP:</td><td><input type=\"checkbox\" name=\"useap\" " + tmpUa + "></td></tr><tr><th colspan=\"2\"><center>Web Server</center></th></tr><tr><td>WEBSERVER PORT:</td><td><input name=\"web_port\" value=\"" + String(WEB_PORT) + "\"></td></tr><tr><th colspan=\"2\"><center>Wifi Connection</center></th></tr><tr><td>WIFI SSID:</td><td><input name=\"wifi_ssid\" value=\"" + WIFI_SSID + "\"></td></tr><tr><td>WIFI PASSWORD:</td><td><input name=\"wifi_pass\" value=\"********\"></td></tr><tr><td>WIFI HOSTNAME:</td><td><input name=\"wifi_host\" value=\"" + WIFI_HOSTNAME + "\"></td></tr><tr><td>USE STATIC CONFIGURATION (OPTIONAL)?:</td><td><input type=\"checkbox\" name=\"usewifistaticip\" " + tmpUseWF + "></td></tr><tr><td>WIFI STATIC IP:</td><td><input name=\"wifi_local_ip\" value=\"" + WIFI_LOCALIP.toString() + "\"></td></tr><tr><td>WIFI GATEWAY:</td><td><input name=\"wifi_gateway\" value=\"" + WIFI_GATEWAY.toString() + "\"></td></tr><tr><td>WIFI SUBNET MASK:</td><td><input name=\"wifi_subnet\" value=\"" + WIFI_SUBNET.toString() + "\"></td></tr><tr><td>WIFI P. DNS:</td><td><input name=\"wifi_pdns\" value=\"" + WIFI_PDNS.toString() + "\"></td></tr><tr><td>WIFI S. DNS:</td><td><input name=\"wifi_sdns\" value=\"" + WIFI_SDNS.toString() + "\"></td></tr><tr><td>CONNECT WIFI:</td><td><input type=\"checkbox\" name=\"usewifi\" " + tmpCw + "></td></tr><tr><th colspan=\"2\"><center>Board LED</center></th></tr><tr><td>LED I/O PIN:</td><td><input name=\"lediopin\" value=\"" + String(LED_PIN) + "\"></td></tr><tr><td>USE LED?:</td><td><input type=\"checkbox\" name=\"useled\" " + tmpUseLed + "></td></tr><tr><th colspan=\"2\"><center>Auto USB Wait</center></th></tr><tr><td>WAIT TIME(ms):</td><td><input name=\"usbwait\" value=\"" + USB_WAIT + "\"></td></tr><tr><th colspan=\"2\"><center>ESP Sleep Mode</center></th></tr><tr><td>ENABLE SLEEP:</td><td><input type=\"checkbox\" name=\"espsleep\" " + tmpSlp + "></td></tr><tr><td>TIME TO SLEEP(minutes):</td><td><input name=\"sleeptime\" value=\"" + TIME2SLEEP + "\"></td></tr></table><br><input id=\"savecfg\" type=\"submit\" value=\"Save Config\"></center></form></body></html>";
   request -> send(200, "text/html", htmStr);
 }
 #endif
@@ -643,47 +644,31 @@ void handleInfo(AsyncWebServerRequest * request) {
 void writeConfig() {
   File iniFile = FILESYS.open("/config.ini", "w");
   if (iniFile) {
-/*
-  String tmpua = "false";
-  String tmpcw = "false";
-  String tmpuw = "false";
-  String tmpslp = "false";
-  if (startAP) {
-    tmpua = "true";
-  }
-  if (connectWifi) {
-    tmpcw = "true";
-  }
-  if (useWF) {
-    tmpuw = "true";
-  }
-  if (espSleep) {
-    tmpslp = "true";
-  }
-*/
     String tmpua = "true";
     String tmpcw = "false";
     String tmpuw = "false";
     String tmpslp = "false";
     String tmpUseLED = "false";
 
-    AP_SSID = "GameMod_PS4_WiFi";
-    AP_PASS = "123456789";
-    Server_IP.fromString("10.1.1.1");
-    WEB_PORT = 80;
-    Subnet_Mask.fromString("255.255.255.0");
-    WIFI_SSID = "Home_WIFI";
-    WIFI_PASS = "password";
-    WIFI_HOSTNAME = "ps4.local";
-    WIFI_LOCALIP.fromString("192.168.0.250");
-    WIFI_GATEWAY.fromString("192.168.0.1");
-    WIFI_SUBNET.fromString("255.255.255.0");
-    WIFI_PDNS.fromString("0.0.0.0");
-    WIFI_SDNS.fromString("0.0.0.0");
-    USB_WAIT = 5000;
-    TIME2SLEEP = 30; // minutes
+    String tmpAP_SSID = "GameMod_PS4_WiFi";
+    String tmpAP_PASS = "123456789";
+    IPAddress tmpServer_IP(10, 1, 1, 1);
+    int tmpWEB_PORT = 80;
+    IPAddress tmpSubnet_Mask(255, 255, 255, 0);
+    String tmpWIFI_SSID = "Home_WIFI";
+    String tmpWIFI_PASS = "password";
+    String tmpWIFI_HOSTNAME = "ps4.local";
+    IPAddress tmpWIFI_LOCALIP(192, 168, 0, 250);
+    IPAddress tmpWIFI_GATEWAY(192, 168, 0, 1);
+    IPAddress tmpWIFI_SUBNET(255, 255, 255, 0);
+    IPAddress tmpWIFI_PDNS(0, 0, 0, 0);
+    IPAddress tmpWIFI_SDNS(0, 0, 0, 0);
+    int tmpUSB_WAIT = 5000;
+    int tmpTIME2SLEEP = 30; // minutes
 
-    iniFile.print("\r\nAP_SSID=" + AP_SSID + "\r\nAP_PASS=" + AP_PASS + "\r\nWEBSERVER_IP=" + Server_IP.toString() + "\r\nWEBSERVER_PORT=" + String(WEB_PORT) + "\r\nSUBNET_MASK=" + Subnet_Mask.toString() + "\r\nWIFI_SSID=" + WIFI_SSID + "\r\nWIFI_PASS=" + WIFI_PASS + "\r\nWIFI_HOST=" + WIFI_HOSTNAME + "\r\nWIFI_LOCALIP=" + WIFI_LOCALIP.toString() + "\r\nWIFI_GATEWAY=" + WIFI_GATEWAY.toString() + "\r\nWIFI_SUBNET=" + WIFI_SUBNET.toString() + "\r\nWIFI_PDNS=" + WIFI_PDNS.toString() + "\r\nWIFI_SDNS=" + WIFI_SDNS.toString() + "\r\nUSEWF=" + tmpuw + "\r\nUSEAP=" + tmpua + "\r\nCONWIFI=" + tmpcw + "\r\nUSELED=" + tmpUseLED + "\r\nUSBWAIT=" + USB_WAIT + "\r\nESPSLEEP=" + tmpslp + "\r\nSLEEPTIME=" + TIME2SLEEP + "\r\n");
+    int tmpLED_PIN = 0;
+
+    iniFile.print("\r\nAP_SSID=" + tmpAP_SSID + "\r\nAP_PASS=" + tmpAP_PASS + "\r\nWEBSERVER_IP=" + tmpServer_IP.toString() + "\r\nWEBSERVER_PORT=" + String(tmpWEB_PORT) + "\r\nSUBNET_MASK=" + tmpSubnet_Mask.toString() + "\r\nWIFI_SSID=" + tmpWIFI_SSID + "\r\nWIFI_PASS=" + tmpWIFI_PASS + "\r\nWIFI_HOST=" + tmpWIFI_HOSTNAME + "\r\nWIFI_LOCALIP=" + tmpWIFI_LOCALIP.toString() + "\r\nWIFI_GATEWAY=" + tmpWIFI_GATEWAY.toString() + "\r\nWIFI_SUBNET=" + tmpWIFI_SUBNET.toString() + "\r\nWIFI_PDNS=" + tmpWIFI_PDNS.toString() + "\r\nWIFI_SDNS=" + tmpWIFI_SDNS.toString() + "\r\nUSEWF=" + tmpuw + "\r\nUSEAP=" + tmpua + "\r\nCONWIFI=" + tmpcw + "\r\nUSELED=" + tmpUseLED + "\r\nLED_PIN=" + tmpLED_PIN + "\r\nUSBWAIT=" + tmpUSB_WAIT + "\r\nESPSLEEP=" + tmpslp + "\r\nSLEEPTIME=" + tmpTIME2SLEEP + "\r\n");
     iniFile.close();
   }
 }
@@ -693,15 +678,6 @@ void setup() {
   //HWSerial.begin(115200);
   //HWSerial.println("Version: " + firmwareVer);
   //USBSerial.begin();
-
-  pinMode(LED_PIN, OUTPUT);
-
-  digitalWrite(LED_PIN, HIGH);
-  delay(200);
-  digitalWrite(LED_PIN, LOW);
-  delay(200);
-  digitalWrite(LED_PIN, HIGH);
-  delay(200);
 
   #if USBCONTROL && defined(CONFIG_IDF_TARGET_ESP32)
   pinMode(usbPin, OUTPUT);
@@ -725,6 +701,42 @@ void setup() {
             iniData += chnk;
           }
           iniFile.close();
+
+          if (instr(iniData, "USELED=")) {
+            String strUseLED = split(iniData, "USELED=", "\r\n");
+            strUseLED.trim();
+            if (strUseLED.equals("true")) {
+              useLED = true;
+            } else {
+              useLED = false;
+            }
+          }
+
+          if (instr(iniData, "LED_PIN=")) {
+            String strLEDPin = split(iniData, "LED_PIN=", "\r\n");
+            strLEDPin.trim();
+            LED_PIN = strLEDPin.toInt();
+          }
+
+          if ((useLED) && (LED_PIN > 0)) {
+            //LED blinkin - board is booting
+            pinMode(LED_PIN, OUTPUT);
+
+            digitalWrite(LED_PIN, LOW);
+            delay(50);
+            digitalWrite(LED_PIN, HIGH);
+            delay(200);
+            digitalWrite(LED_PIN, LOW);
+            delay(200);
+            digitalWrite(LED_PIN, HIGH);
+            delay(200);
+            digitalWrite(LED_PIN, LOW);
+            delay(200);
+            digitalWrite(LED_PIN, HIGH);
+            delay(200);
+            digitalWrite(LED_PIN, LOW);
+            delay(500);
+          }
 
           if (instr(iniData, "AP_SSID=")) {
             AP_SSID = split(iniData, "AP_SSID=", "\r\n");
@@ -820,16 +832,6 @@ void setup() {
               connectWifi = true;
             } else {
               connectWifi = false;
-            }
-          }
-
-          if (instr(iniData, "USELED=")) {
-            String strUseLED = split(iniData, "USELED=", "\r\n");
-            strUseLED.trim();
-            if (strUseLED.equals("true")) {
-              useLED = true;
-            } else {
-              useLED = false;
             }
           }
 
@@ -1133,8 +1135,6 @@ void setup() {
       TIME2SLEEP = 5;
     } //min sleep time
     bootTime = millis();
-
-    digitalWrite(LED_PIN, LOW);
   }
 
   #if defined(CONFIG_IDF_TARGET_ESP32S2) | defined(CONFIG_IDF_TARGET_ESP32S3)
@@ -1185,7 +1185,7 @@ void loop() {
   currentMillis = millis();
 
   if (WiFiStarted) {
-    if (useLED) {
+    if ((useLED) && (LED_PIN > 0)) {
       //Using LED. Is it AP or WiFi connection to router?
       if (startAP) {
         //Access Point... LED blinking every 750 milliseconds
